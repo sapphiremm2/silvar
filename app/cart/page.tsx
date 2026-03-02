@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { useCartStore } from '@/stores/cartStore'
 import { formatSapphires } from '@/lib/utils/sapphires'
@@ -9,7 +9,7 @@ import { useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { Minus, Plus, Trash2, CreditCard, Gem } from 'lucide-react'
 
-export default function CartPage() {
+function CartPageInner() {
   const { items, removeItem, updateQty, totalSapphires, totalUSD, clearCart } = useCartStore()
   const [payMethod, setPayMethod] = useState<'stripe' | 'sapphires'>('stripe')
   const [loading, setLoading] = useState(false)
@@ -151,5 +151,13 @@ export default function CartPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function CartPage() {
+  return (
+    <Suspense fallback={<div className="max-w-4xl mx-auto px-6 py-10 text-[#64748b]">Loading cart...</div>}>
+      <CartPageInner />
+    </Suspense>
   )
 }
