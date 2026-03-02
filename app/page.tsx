@@ -3,8 +3,7 @@ import { ParticleBackground } from '@/components/ui/ParticleBackground'
 import { ProductCard } from '@/components/shop/ProductCard'
 import { BoxCard } from '@/components/boxes/BoxCard'
 import { HeroSection } from '@/components/home/HeroSection'
-import { StatsBar } from '@/components/home/StatsBar'
-import { CreatorBanner } from '@/components/home/CreatorBanner'
+import { StatsBar, CreatorBanner } from '@/components/home/HomeWidgets'
 
 export default async function HomePage() {
   const supabase = createClient()
