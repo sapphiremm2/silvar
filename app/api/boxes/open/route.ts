@@ -27,8 +27,9 @@ export async function POST(req: Request) {
     .eq('id', user.id)
     .single()
 
-  if ((profile?.sapphire_balance ?? 0) < box.price_sapphires) {
-    return NextResponse.json({ error: 'Insufficient sapphires' }, { status: 400 })
+  const balance = (profile as { sapphire_balance?: number } | null)?.sapphire_balance ?? 0
+  if (balance < box.price_sapphires) {
+    return NextResponse.json({ error: 'Insufficient balance' }, { status: 402 })
   }
 
   // Weighted random item selection
