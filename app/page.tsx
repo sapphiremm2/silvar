@@ -8,10 +8,12 @@ import { StatsBar, CreatorBanner } from '@/components/home/HomeWidgets'
 export default async function HomePage() {
   const supabase = createClient()
 
-  const [{ data: products }, { data: boxes }] = await Promise.all([
+  const [{ data: productsRaw }, { data: boxesRaw }] = await Promise.all([
     supabase.from('products').select('*').eq('is_active', true).order('created_at', { ascending: false }).limit(8),
     supabase.from('blind_boxes').select('*').eq('is_active', true).limit(6),
   ])
+  const products = (productsRaw ?? []) as any[]
+  const boxes = (boxesRaw ?? []) as any[]
 
   return (
     <>
