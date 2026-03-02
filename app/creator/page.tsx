@@ -42,7 +42,7 @@ export default function CreatorPage() {
     e.preventDefault()
     if (!user) { toast.error('Please log in first'); return }
     setLoading(true)
-    const { error } = await supabase.from('creator_applications').insert({
+    const { error } = await (supabase.from('creator_applications') as any).insert({
       user_id: user.id,
       platform: form.platform,
       channel_url: form.channel_url,
