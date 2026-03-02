@@ -37,7 +37,7 @@ export function SupportChat() {
     // Save ticket to Supabase
     if (!submitted) {
       const { data: { user } } = await supabase.auth.getUser()
-      await supabase.from('support_tickets').insert({
+      await (supabase.from('support_tickets') as any).insert({
         user_id: user?.id ?? null,
         message: text,
         subject: 'Support Chat',
