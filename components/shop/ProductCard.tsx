@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
 import { useCartStore } from '@/stores/cartStore'
 import { RarityBadge } from '@/components/ui/RarityBadge'
 import { formatSapphires, sapphiresToUSD } from '@/lib/utils/sapphires'
@@ -33,10 +34,10 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
   }
 
   return (
+    <Link href={`/shop/${product.id}`} onClick={onSelect} className="block">
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      onClick={onSelect}
       className="glass rounded-xl overflow-hidden cursor-pointer group border border-[rgba(0,242,255,0.1)] hover:border-[rgba(0,242,255,0.3)] transition-all hover:shadow-[0_8px_40px_rgba(0,242,255,0.1)]"
     >
       {/* Image / emoji area */}
@@ -76,5 +77,6 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
         </div>
       </div>
     </motion.div>
+    </Link>
   )
 }
