@@ -34,6 +34,7 @@ export function Footer() {
             <li><Link href="/creator" className="hover:text-[#e2e8f0] transition-colors">Creator Program</Link></li>
             <li><a href="mailto:support@silvar.gg" className="hover:text-[#e2e8f0] transition-colors">Contact Us</a></li>
             <li><Link href="/terms" className="hover:text-[#e2e8f0] transition-colors">Terms of Service</Link></li>
+            <li><Link href="/privacy" className="hover:text-[#e2e8f0] transition-colors">Privacy Policy</Link></li>
             <li><Link href="/admin" className="hover:text-[#ff00c1] transition-colors">Admin Panel</Link></li>
           </ul>
         </div>
@@ -41,7 +42,11 @@ export function Footer() {
       <div className="border-t border-[rgba(30,41,59,0.6)]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#64748b]">
           <span>© 2025 silvar.gg — All rights reserved</span>
-          <span>Built with 💎 Sapphires · $1 = 50💎</span>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="hover:text-[#e2e8f0] transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-[#e2e8f0] transition-colors">Privacy</Link>
+            <span>Built with 💎 Sapphires · $1 = 50💎</span>
+          </div>
         </div>
       </div>
     </footer>
